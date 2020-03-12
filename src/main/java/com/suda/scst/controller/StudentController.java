@@ -1,8 +1,11 @@
 package com.suda.scst.controller;
 
+import com.suda.scst.domain.Student;
 import com.suda.scst.services.StudentService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,25 +22,29 @@ import java.util.Map;
 @RequestMapping("/")
 public class StudentController {
 
-	private final StudentService studentService;
-	
-	public StudentController(StudentService studentService) {
-		this.studentService = studentService;
-	}
+    @Autowired
+    private StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @GetMapping("/graph")
-	public Map<String, Object> graph(@RequestParam(value = "limit",required = false) Integer limit) {
-		return studentService.graph(limit == null ? 100 : limit);
-	}
+    public Map<String, Object> graph(@RequestParam(value = "limit", required = false) Integer limit) {
+        return studentService.graph(limit == null ? 100 : limit);
+    }
 
-    @RequestMapping(value = "/newStudent")
+    @PostMapping(value = "/student/add")
     //接收hello请求
-	public void addStudent(@RequestBody String newstudent){
-		System.out.println("String: "+newstudent);
-		//Student add = JSON.parseObject(buyAdd, Student.class);  //此处用的FastJson转换为对象
-		//List<Student> newStudent = JSON.parseArray(newstudent, Student.class);
-		//System.out.println(newStudent);
-	}
+    public void addStudent(@RequestBody Student student) {
+        studentService.upsertStudent(student);
+    }
+
+
+    @GetMapping("/student/query")
+    public Student graph(@RequestParam(value = "name") String name) {
+        return studentService.findByName(name);
+    }
 
 //    public Map<String,Student> getStudent()
 //	{

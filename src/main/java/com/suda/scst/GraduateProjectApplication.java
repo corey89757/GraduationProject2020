@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
  * @author Mark Angrish
  */
 @SpringBootApplication
-@EnableNeo4jRepositories("com.suda.scst.repositories.repositories")
+@EnableNeo4jRepositories("com.suda.scst.repositories")
 public class GraduateProjectApplication {
 
     public static void main(String[] args) {

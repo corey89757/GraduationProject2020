@@ -1,14 +1,14 @@
 package com.suda.scst.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Mark Angrish
@@ -16,63 +16,78 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @NodeEntity
 public class Student {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-	private String name;
-	private int student_id;
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String name;
+    private String gender;
+    private int birth;
+    private int age;
 
-	private String gender;
-	private int birth;
-	private int age;
+    @JsonIgnoreProperties
+    @Relationship(type = "STUDY_IN", direction = Relationship.OUTGOING)
+    private List<Class> classList = new ArrayList<>();
 
-	@JsonIgnoreProperties("student")
-	@Relationship(type = "ACTED_IN", direction = Relationship.INCOMING)
-	private List<Role> roles;
+    public Student() {
+    }
 
-	public Student() {
-	}
+    public Student(String name, String gender, int birth, int age) {
+        this.name = name;
+        this.gender = gender;
+        this.birth = birth;
+        this.age = age;
+    }
 
-	public Student(String name, int student_id, String gender, int birth, int age) {
-		this.name = name;
-		this.student_id = student_id;
-		this.gender = gender;
-		this.birth = birth;
-		this.age = age;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getStudent_id() {
-		return student_id;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public int getBirth() {
-		return birth;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public int getBirth() {
+        return birth;
+    }
 
-	public List<Role> getRoles() {
-		return roles;
-	}
+    public void setBirth(int birth) {
+        this.birth = birth;
+    }
 
-	public void addRole(Role role) {
-		if (this.roles == null) {
-			this.roles = new ArrayList<>();
-		}
-		this.roles.add(role);
-	}
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public List<Class> getClassList() {
+        return classList;
+    }
+
+    public void setClassList(List<Class> classList) {
+        this.classList = classList;
+    }
+
+
+    public void addClass(Class clazz) {
+        this.classList.add(clazz);
+    }
 }

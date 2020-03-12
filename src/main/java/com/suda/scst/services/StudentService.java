@@ -1,6 +1,6 @@
 package com.suda.scst.services;
 
-import com.suda.scst.domain.Role;
+import com.suda.scst.domain.Class;
 import com.suda.scst.domain.Student;
 import com.suda.scst.repositories.StudentRepository;
 
@@ -37,11 +37,11 @@ public class StudentService {
             nodes.add(map("name", student.getName(), "label", "student"));
             int target = i;
             i++;
-            for (Role role : student.getRoles()) {
-                Map<String, Object> actor = map("name", role.getPerson().getName(), "label", "actor");
-                int source = nodes.indexOf(actor);
+            for (Class clazz : student.getClassList()) {
+                Map<String, Object> classMap = map("name", clazz.getName(), "label", "class");
+                int source = nodes.indexOf(classMap);
                 if (source == -1) {
-                    nodes.add(actor);
+                    nodes.add(classMap);
                     source = i++;
                 }
                 rels.add(map("source", source, "target", target));
@@ -90,7 +90,7 @@ public class StudentService {
     //更新或新增（1.如果入参的movie对象是先从库里搜索出来，在内存中改了部分字段，那么这边save就是更新，
     // 2.如果入参的movie对象是直接new出来的，那么就是新增，框架会帮你自动生成id）
     @Transactional(readOnly = true)
-    public Student createMovie(Student student) {
+    public Student upsertStudent(Student student) {
         return studentRepository.save(student);
     }
 }
