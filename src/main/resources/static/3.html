@@ -1,0 +1,167 @@
+<!-- form: -->
+<div class="col-sm-10">
+    <!--            <div class="col-lg-8 col-lg-offset-2">-->
+    <div class="page-header">
+        <h2>学生信息录入</h2>
+    </div>
+
+    <form id="defaultForm" method="post" class="form-horizontal" action="/login"
+          data-bv-message="This value is not valid"
+          data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+          data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+          data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">姓名</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="lastName" placeholder="姓" required data-bv-notempty-message="姓不能为空" />
+
+            </div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="firstName" placeholder="名" required data-bv-notempty-message="名不能为空" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-3 control-label">学号</label>
+            <div class="col-lg-5">
+                <!--                            <input type="text" class="form-control" name="username"-->
+                <!--                                   data-bv-message="无效的用户名"-->
+                <!--                                   required data-bv-notempty-message="用户名必须填写且不能为空"-->
+                <!--                                   pattern="^[a-zA-Z0-9]+$" data-bv-regexp-message="用户名只能由数字和字母组成"-->
+                <!--                                   data-bv-stringlength="true" data-bv-stringlength-min="6" data-bv-stringlength-max="15" data-bv-stringlength-message="用户名长度必须在6-15之间"-->
+                <!--                                   data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other"-->
+                <!--                                   data-bv-remote="true" data-bv-remote-url="remote.php" data-bv-remote-message="该用户名不可用"-->
+                <!--                                    />-->
+                <input type="text" class="form-control" name="student_id"
+                       data-bv-message="无效的学号"
+                       required data-bv-notempty-message="学号必须填写且不能为空"
+                       pattern="^[0-9]+$" data-bv-regexp-message="学号只能由数字组成"
+                       data-bv-stringlength="true" data-bv-stringlength-min="10" data-bv-stringlength-max="10" data-bv-stringlength-message="学号长度必须为10位"
+                />
+                <!--                                   data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other"-->
+                <!--                                   data-bv-remote="true" data-bv-remote-url="remote.php" data-bv-remote-message="该用户名不可用"-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-3 control-label">电子邮箱</label>
+            <div class="col-lg-5">
+                <input class="form-control" name="email" placeholder="非必填项" type="email" data-bv-emailaddress-message="无效的邮箱地址" />
+            </div>
+        </div>
+
+        <!--                    <div class="form-group">-->
+        <!--                        <label class="col-lg-3 control-label">Password</label>-->
+        <!--                        <div class="col-lg-5">-->
+        <!--                            <input type="password" class="form-control" name="password"-->
+        <!--                                   required data-bv-notempty-message="The password is required and cannot be empty"-->
+        <!--                                   data-bv-identical="true" data-bv-identical-field="confirmPassword" data-bv-identical-message="The password and its confirm are not the same"-->
+        <!--                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username"/>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+
+        <!--                    <div class="form-group">-->
+        <!--                        <label class="col-lg-3 control-label">Retype password</label>-->
+        <!--                        <div class="col-lg-5">-->
+        <!--                            <input type="password" class="form-control" name="confirmPassword"-->
+        <!--                                   required data-bv-notempty-message="The confirm password is required and cannot be empty"-->
+        <!--                                   data-bv-identical="true" data-bv-identical-field="password" data-bv-identical-message="The password and its confirm are not the same"-->
+        <!--                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username"/>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+
+        <div class="form-group">
+            <label class="col-lg-3 control-label">性别</label>
+            <div class="col-lg-5">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="male" required data-bv-notempty-message="需要选择性别" /> 男
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="female" /> 女
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="other" /> 其他
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-3 control-label">出生日期</label>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" name="birthday" data-bv-date="false" data-bv-date-format="YYYY/MM/DD" data-bv-date-message="无效的出生日期" /> (YYYY/MM/DD)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-3 control-label">专业</label>
+            <div class="col-lg-5">
+                <select class="form-control" name="major" data-bv-notempty data-bv-notempty-message="需要选择专业">
+                    <option value="">-- Select a major --</option>
+                    <option value="co">计算机</option>
+                    <option value="ph">物联网</option>
+                    <option value="in">信管</option>
+                    <option value="so">软件工程</option>
+                    <option value="pe">人工智能</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">编程语言</label>
+            <div class="col-lg-5">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="net" data-bv-choice="true" data-bv-choice-min="2" data-bv-choice-max="4" data-bv-choice-message="请选择2-4门你擅长的编程语言" /> .Net
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="java" /> Java
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="c" /> C/C++
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="php" /> PHP
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="perl" /> Perl
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="ruby" /> Ruby
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="python" /> Python
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="programs[]" value="javascript" /> Javascript
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-9 col-lg-offset-3">
+                <button type="submit" class="btn btn-primary">确定</button>
+                <button type="reset" class="btn btn-default">重置</button>
+            </div>
+        </div>
+    </form>
+</div>

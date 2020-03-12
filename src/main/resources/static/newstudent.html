@@ -1,0 +1,391 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>学生管理系统</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./dist/css/1.css" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/css/bootstrapValidator.css"/>
+
+    <script src="./dist/js/1.js"></script>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script type="text/javascript" src="./dist/js/jquery/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="./dist/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./dist/js/bootstrap/bootstrapValidator.js"></script>
+</head>
+
+<body>
+<div class="topnav">
+    <ul>
+        <a class="active" href="#home"><span class="glyphicon glyphicon-home"></span> 主页</a>
+        <a href="index.html" target="_self">学生</a>
+        <a href="ajax.html">老师</a>
+        <a href="#about" style="float:right">关于 <span class="glyphicon glyphicon-info-sign"></span></a>
+    </ul>
+</div>
+<div class="row">
+    <div class="panel-group col-sm-2" id="panelContainer">
+        <div class="panel panel-default">
+            <div id="header1" class="panel-heading" data-toggle="collapse" data-target="#sub1" data-parent="#panelContainer">
+                <i class="glyphicon glyphicon-user"></i>
+                <a href="#">学生管理</a>
+                <span class="glyphicon glyphicon-triangle-right pull-right"></span>
+            </div>
+            <div id="sub1" class="collapse panel-collapse">
+                <div class="panel-body">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                        <span class="glyphicon glyphicon-align-left" aria-hidden="true">
+                        </span>学生信息录入</a>
+                        </li>
+                        <li>
+                            <a href="newstudent.html">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                        </span>学生信息新增</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                        </span>学生信息删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div id="header2" class="panel-heading" data-toggle="collapse" data-target="#sub2" data-parent="#panelContainer">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                <a href="#">班级管理</a>
+                <span class="glyphicon glyphicon-triangle-right pull-right"></span>
+            </div>
+            <div id="sub2" class="collapse panel-collapse">
+                <div class="panel-body">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                        <span class="glyphicon glyphicon-align-left" aria-hidden="true">
+                        </span>班级信息录入</a>
+                        </li>
+                        <li>
+                            <a href="newstudent.html">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                        </span>班级信息新增</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                        </span>班级信息删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div id="header3" class="panel-heading" data-toggle="collapse" data-target="#sub3" data-parent="#panelContainer">
+                <i class="glyphicon glyphicon-leaf"></i>
+                <a href="#">专业管理</a>
+                <span class="glyphicon glyphicon-triangle-right pull-right"></span>
+            </div>
+            <div id="sub3" class="collapse panel-collapse">
+                <div class="panel-body">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                        <span class="glyphicon glyphicon-align-left" aria-hidden="true">
+                        </span>专业信息录入</a>
+                        </li>
+                        <li>
+                            <a href="newstudent.html">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                        </span>专业信息新增</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                        </span>专业信息删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <ol class="breadcrumb">
+            <li class="active">菜单
+            </li>
+            <li class="active">学生信息
+            </li>
+        </ol>
+        <!--class属性在css用 action属性后接映射名在控制器里面有 method属性一般都是post -->
+            <form id="defaultForm" method="post" class="form-horizontal" action="/newStudent"
+                  data-bv-message="This value is not valid"
+                  data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                  data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                  data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">姓名</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" name="name" placeholder="姓名" required data-bv-notempty-message="姓名不能为空" />
+                        <!--type说明他是文本输入框  name后接实体类的类成员名字，不然传不出去！！-->
+                    </div>
+<!--                    <div class="col-lg-2">-->
+<!--                        <input type="text" class="form-control" name="firstName" placeholder="名" required data-bv-notempty-message="名不能为空" />-->
+<!--                    </div>-->
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">学号</label>
+                    <div class="col-lg-4">
+                        <!--                            <input type="text" class="form-control" name="username"-->
+                        <!--                                   data-bv-message="无效的用户名"-->
+                        <!--                                   required data-bv-notempty-message="用户名必须填写且不能为空"-->
+                        <!--                                   pattern="^[a-zA-Z0-9]+$" data-bv-regexp-message="用户名只能由数字和字母组成"-->
+                        <!--                                   data-bv-stringlength="true" data-bv-stringlength-min="6" data-bv-stringlength-max="15" data-bv-stringlength-message="用户名长度必须在6-15之间"-->
+                        <!--                                   data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other"-->
+                        <!--                                   data-bv-remote="true" data-bv-remote-url="remote.php" data-bv-remote-message="该用户名不可用"-->
+                        <!--                                    />-->
+                        <input type="text" class="form-control" name="student_id"
+                               placeholder="默认为10位数字"
+                               data-bv-message="无效的学号"
+                               required data-bv-notempty-message="学号必须填写且不能为空"
+                               pattern="^[0-9]+$" data-bv-regexp-message="学号只能由数字组成"
+                               data-bv-stringlength="true" data-bv-stringlength-min="10" data-bv-stringlength-max="10" data-bv-stringlength-message="学号长度必须为10位"
+                        />
+                        <!--                                   data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other"-->
+                        <!--                                   data-bv-remote="true" data-bv-remote-url="remote.php" data-bv-remote-message="该用户名不可用"-->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">电子邮箱</label>
+                    <div class="col-lg-4">
+                        <input class="form-control" name="email" placeholder="非必填项" type="email" data-bv-emailaddress-message="无效的邮箱地址】" />
+                    </div>
+                </div>
+
+                <!--                    <div class="form-group">-->
+                <!--                        <label class="col-lg-3 control-label">Password</label>-->
+                <!--                        <div class="col-lg-5">-->
+                <!--                            <input type="password" class="form-control" name="password"-->
+                <!--                                   required data-bv-notempty-message="The password is required and cannot be empty"-->
+                <!--                                   data-bv-identical="true" data-bv-identical-field="confirmPassword" data-bv-identical-message="The password and its confirm are not the same"-->
+                <!--                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username"/>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+
+                <!--                    <div class="form-group">-->
+                <!--                        <label class="col-lg-3 control-label">Retype password</label>-->
+                <!--                        <div class="col-lg-5">-->
+                <!--                            <input type="password" class="form-control" name="confirmPassword"-->
+                <!--                                   required data-bv-notempty-message="The confirm password is required and cannot be empty"-->
+                <!--                                   data-bv-identical="true" data-bv-identical-field="password" data-bv-identical-message="The password and its confirm are not the same"-->
+                <!--                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username"/>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">性别</label>
+                    <div class="col-lg-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" value="male" required data-bv-notempty-message="需要选择性别" /> 男
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" value="female" /> 女
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" value="other" /> 其他
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">出生日期</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" name="birth" data-bv-date="false" data-bv-date-format="YYYY/MM/DD" data-bv-date-message="无效的出生日期" /> (YYYY/MM/DD)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">专业</label>
+                    <div class="col-lg-4">
+                        <select class="form-control" name="major" data-bv-notempty data-bv-notempty-message="需要选择专业">
+                            <option value="">-- Select a major --</option>
+                            <option value="co">计算机</option>
+                            <option value="ph">物联网</option>
+                            <option value="in">信管</option>
+                            <option value="so">软件工程</option>
+                            <option value="pe">人工智能</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">编程语言</label>
+                    <div class="col-lg-4">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="net" data-bv-choice="true" data-bv-choice-min="2" data-bv-choice-max="4" data-bv-choice-message="请选择2-4门你擅长的编程语言" /> .Net
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="java" /> Java
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="c" /> C/C++
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="php" /> PHP
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="perl" /> Perl
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="ruby" /> Ruby
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="python" /> Python
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="programs[]" value="javascript" /> Javascript
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-9 col-lg-offset-3">
+                        <button type="submit" class="btn btn-primary">确定</button>
+                        <!--提交按钮-->
+                        <button type="reset" class="btn btn-default">重置</button>
+                    </div>
+                </div>
+            </form>
+    <!--    <div class="col-md-5">-->
+    <!--        <div class="panel panel-default">-->
+    <!--            <div class="panel-heading" id="name">Details</div>-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-sm-4 col-md-4">-->
+    <!--                    <img src="" class="well" id="poster"/>-->
+    <!--                </div>-->
+    <!--                <div class="col-md-8 col-sm-8">-->
+    <!--                    <h4>Crew</h4>-->
+    <!--                    <ul id="crew">-->
+    <!--                    </ul>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#defaultForm').bootstrapValidator();
+        // $('#defaultForm').submit(function(e){
+        //         alert("Submitted");
+        //     });
+    });
+    //发送表单ajax请求
+    $(':submit').on('click',function(){
+        $.ajax({
+            url:"newStudent",
+            type:"POST",
+            data:JSON.stringify($('form').serializeObject()),
+            contentType:"application/json",  //缺失会出现URL编码，无法转成json对象
+            success:function(){
+                //alert("成功");
+            }
+        });
+    });
+
+    /**
+     * 自动将form表单封装成json对象
+     */
+    $.fn.serializeObject = function() {
+        var list = [];
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (!o[this.name] && o[this.name]!='') {
+                o[this.name] = this.value || '';
+            } else {
+                list.push(o);
+                o={};
+                o[this.name] = this.value || '';
+            }
+        });
+        list.push(o);
+        return list;
+    };
+    //注册提交按钮点击事件
+    // form.find('#submitBtn').on('click', function () {
+    //     var validator = form.data("bootstrapValidator").validate();
+    //     if (validator.isValid()) {  //表单验证通过才向后端发请求
+    //         var formData = getFormData(form);
+    //         var obj = JSON.parse(formData);
+    //         obj.id = select[0]['id'];
+    //         var data = JSON.stringify(obj);
+    //         $.ajax({
+    //             type: 'POST',
+    //             data: data,
+    //             contentType: 'application/json; charset=utf-8',
+    //             url: '/event/update'
+    //         }).done(function (res) {
+    //             if (res.status !== 0) {//校验出错，提示错误信息
+    //                 $('#addMsg').text(res.message);
+    //             } else {
+    //                 $('#bootstrap-table').bootstrapTable('refresh');
+    //                 dialog.close();
+    //             }
+    //         });
+    //     }
+    // });
+
+    //展示对话框
+    var dialog = BootstrapDialog.show({
+            size: 'size-wide',
+            title: '请填写',
+            message: form,
+            onshown: function () { //对话框展示时验证表单
+                //对话框展示时验证表单
+                form.data("bootstrapValidator").validate();
+                //开始日期和结束日期修改时，主动触发校验
+                form.find('#datetimepicker1').on('changeDate', function () {
+                    form.bootstrapValidator('revalidateField', 'startTime');
+                    form.bootstrapValidator('revalidateField', 'endTime');
+                });
+                form.find('#datetimepicker2').on('changeDate', function () {
+                    form.bootstrapValidator('revalidateField', 'startTime');
+                    form.bootstrapValidator('revalidateField', 'endTime');
+                });
+            }
+        }
+    );
+</script>
+<!-- 底部页脚部分 -->
+<div class="footer">
+    <p class="text-center">
+        2020 &copy; Odin.
+    </p>
+</div>
+</body>
+</html>
